@@ -1,23 +1,34 @@
 # SMS-Spam-Detection
-An NLP-driven security engine designed to identify and mitigate mobile messaging threats. By leveraging Multinomial Naive Bayes and TF-IDF vectorization, this system classifies incoming SMS data into "Ham" or "Spam" with high precision, protecting users from phishing and unsolicited marketing.
 
-Why this is different
-Most basic tutorials just throw a model at the data and call it a day. In this repo, I focused heavily on the text cleaning pipeline. SMS data is messy—it has slang, abbreviations, and weird punctuation. I spent a lot of time on the preprocessing stage to make sure the model wasn't just memorizing words but actually picking up on spam patterns.
+I built this project to tackle the classic problem of mobile spam. We’ve all gotten those annoying "winner" texts; this is my attempt at using Machine Learning to filter them out before they even reach a user.
 
-The Tech Stack
-Language: Python 3.x
+Why I built it this way:
+I used the Multinomial Naive Bayes algorithm because it’s a powerhouse for text classification. It’s fast, efficient, and handles word counts much better than more complex models for this specific task.
 
-Libraries: Scikit-learn, Pandas, NLTK (for the heavy lifting on text)
+One thing I realized during the process is that data cleaning is 90% of the work. I had to drop unnecessary columns (like those 'Unnamed' ones in the CSV) and map the labels to numbers so the computer could actually process them.
 
-Algorithm: Multinomial Naive Bayes (chosen for its speed and efficiency with text counts)
+The Technical Workflow:
+Exploratory Data Analysis (EDA): I visualized the distribution of 'ham' vs 'spam' using Seaborn to understand the class imbalance.
 
-Vectorization: TF-IDF (because some words like "the" are useless, while "win" or "urgent" are huge red flags)
+Text Processing: I used TfidfVectorizer to convert raw text into a numerical format. This is better than simple word counting because it penalizes common words (like "the") and rewards "signature" words that actually identify spam.
 
-How it works
+Modeling: Split the data (70/30) and trained the classifier.
 
-The Math: I used a TF-IDF Vectorizer to turn the text into a matrix of numbers that the computer can actually understand.
+Evaluation: I didn't just look at accuracy. I generated a full Classification Report and a Confusion Matrix to see exactly where the model was getting confused.
 
-The Prediction: The Naive Bayes model calculates the probability of a message being spam based on the word frequencies it saw during training.
+Key Stats
+Accuracy: ~96%
+Unique Words in Corpus: 15,585
+Average Message Length: 15 words
 
-Results
-The model hits an accuracy of about 98%. However, I focused more on the Confusion Matrix to ensure I wasn't accidentally marking "Ham" as "Spam"—because missing a text from your mom is worse than seeing one ad for a fake cruise.
+How to use this:
+Open the .ipynb file in Google Colab.
+
+Make sure you have your spam.csv file ready (I loaded mine via Google Drive).
+
+Run the cells to see the visualizations and the final performance metrics.
+
+Lessons Learned
+The model is great at catching "ham," but it’s interesting to see where it misses spam. In the future, I might try adding "Stemming" or "Lemmatization" to see if reducing words to their roots helps the model generalize even better.
+
+
