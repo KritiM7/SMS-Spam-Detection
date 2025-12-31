@@ -1,5 +1,5 @@
 # SMS-Spam-Detection
-Secure-Messaging-Filter: An NLP-driven security engine designed to identify and mitigate mobile messaging threats. By leveraging Multinomial Naive Bayes and TF-IDF vectorization, this system classifies incoming SMS data into "Ham" or "Spam" with high precision, protecting users from phishing and unsolicited marketing.
+An NLP-driven security engine designed to identify and mitigate mobile messaging threats. By leveraging Multinomial Naive Bayes and TF-IDF vectorization, this system classifies incoming SMS data into "Ham" or "Spam" with high precision, protecting users from phishing and unsolicited marketing.
 
 Why this is different
 Most basic tutorials just throw a model at the data and call it a day. In this repo, I focused heavily on the text cleaning pipeline. SMS data is messy—it has slang, abbreviations, and weird punctuation. I spent a lot of time on the preprocessing stage to make sure the model wasn't just memorizing words but actually picking up on spam patterns.
